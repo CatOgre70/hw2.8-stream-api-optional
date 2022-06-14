@@ -36,10 +36,7 @@ public class DepartmentBook {
     }
 
     public boolean checkName(String name){
-        if(depMap.containsKey(name))
-            return true;
-        else
-            return false;
+        return depMap.containsKey(name);
     }
 
     public boolean checkId(int id){
