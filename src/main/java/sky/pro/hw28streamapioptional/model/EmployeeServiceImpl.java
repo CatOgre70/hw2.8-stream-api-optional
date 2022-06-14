@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
     public static DepartmentBook dBook;
-    private EmployeeBook eBook;
+    private final EmployeeBook eBook;
 
     public EmployeeServiceImpl(){
 

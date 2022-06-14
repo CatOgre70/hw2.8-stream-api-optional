@@ -10,7 +10,7 @@ public interface EmployeeService {
     Employee[] departmentEmployeeList(int department);
     Employee findEmployeeWithMaxSalary(int department);
 
-    public Employee findEmployeeWithMinSalary(int department);
+    Employee findEmployeeWithMinSalary(int department);
 
     Employee[] allDepartmentsEmployeeList();
 }
