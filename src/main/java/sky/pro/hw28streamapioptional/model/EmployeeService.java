@@ -1,16 +1,20 @@
 package sky.pro.hw28streamapioptional.model;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public interface EmployeeService {
 
     Employee addEmployee(String firstName, String middleName, String lastName, int department, double salary);
     Employee removeEmployee(String firstName, String middleName, String lastName);
     Employee findEmployee(String firstName, String middleName, String lastName);
-    Employee[] allEmployeeList();
+    List<Employee> allEmployeeList();
 
-    Employee[] departmentEmployeeList(int department);
+    Map<Integer, Set<Employee>> departmentEmployeeList(int department);
     Employee findEmployeeWithMaxSalary(int department);
 
     Employee findEmployeeWithMinSalary(int department);
 
-    Employee[] allDepartmentsEmployeeList();
+    Map<Integer, Set<Employee>> allDepartmentsEmployeeList();
 }

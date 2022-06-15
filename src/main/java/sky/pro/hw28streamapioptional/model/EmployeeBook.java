@@ -49,24 +49,18 @@ public class EmployeeBook {
         }
     }
 
-    public Employee[] list(){
-        List<Employee> eList = eBook.keySet().stream()
+    public List<Employee> list(){
+        return eBook.keySet().stream()
                 .map(s -> eBook.get(s))
                 .collect(Collectors.toList());
-        Employee[] eArray = new Employee[eList.size()];
-        eList.toArray(eArray);
-        return eArray;
 
     }
 
-    public Employee[] listOfDepartment(int department){
-        List<Employee> eList = eBook.keySet().stream()
+    public Map<Integer, Set<Employee>> listOfDepartment(int department){
+        return eBook.keySet().stream()
                 .filter(s -> eBook.get(s).getDepartment() == department)
                 .map(s -> eBook.get(s))
-                .collect(Collectors.toList());
-        Employee[] eArray = new Employee[eList.size()];
-        eList.toArray(eArray);
-        return eArray;
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
     }
 
     public Employee findEmployeeWithMaxSalary(int department) {
@@ -91,15 +85,10 @@ public class EmployeeBook {
 
     }
 
-    public Employee[] allDepartmentsEmployeeList() {
-        Comparator<Employee> employeeNameComparator
-                = Comparator.comparingInt(Employee::getDepartment);
-        List<Employee> eList = (List<Employee>) eBook.keySet().stream()
+    public Map<Integer, Set<Employee>> allDepartmentsEmployeeList(){
+        return eBook.keySet().stream()
                 .map(s -> eBook.get(s))
-                .sorted(employeeNameComparator)
-                .collect(Collectors.toList());
-        Employee[] eArray = new Employee[eList.size()];
-        eList.toArray(eArray);
-        return eArray;
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
     }
+
 }

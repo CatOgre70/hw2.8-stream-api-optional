@@ -2,6 +2,10 @@ package sky.pro.hw28streamapioptional.model;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
     public static DepartmentBook dBook;
@@ -58,12 +62,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee[] allEmployeeList() {
+    public List<Employee> allEmployeeList() {
         return eBook.list();
     }
 
     @Override
-    public Employee[] departmentEmployeeList(int department) {
+    public Map<Integer, Set<Employee>> departmentEmployeeList(int department) {
         return eBook.listOfDepartment(department);
     }
 
@@ -77,7 +81,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee[] allDepartmentsEmployeeList() {
+    public Map<Integer, Set<Employee>> allDepartmentsEmployeeList() {
         return eBook.allDepartmentsEmployeeList();
     }
 
