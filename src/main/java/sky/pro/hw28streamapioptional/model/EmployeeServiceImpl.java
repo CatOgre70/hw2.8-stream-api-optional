@@ -13,6 +13,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public EmployeeServiceImpl(){
 
+
         dBook = new DepartmentBook();
         eBook = new EmployeeBook();
 
@@ -67,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Map<Integer, Set<Employee>> departmentEmployeeList(int department) {
+    public Map<String, Set<Employee>> departmentEmployeeList(int department) {
         return eBook.listOfDepartment(department);
     }
 
@@ -81,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Map<Integer, Set<Employee>> allDepartmentsEmployeeList() {
+    public Map<String, Set<Employee>> allDepartmentsEmployeeList() {
         return eBook.allDepartmentsEmployeeList();
     }
 

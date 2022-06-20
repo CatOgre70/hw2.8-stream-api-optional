@@ -58,7 +58,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/departments/all")
-    public Map<Integer, Set<Employee>> departmentEmployeeList(@RequestParam(value = "departmentId", required = false) String departmentId) {
+    public Map<String, Set<Employee>> departmentEmployeeList(@RequestParam(value = "departmentId", required = false) String departmentId) {
 
         int id;
         if (departmentId == null) {

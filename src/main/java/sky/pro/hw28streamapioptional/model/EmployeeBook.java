@@ -56,11 +56,13 @@ public class EmployeeBook {
 
     }
 
-    public Map<Integer, Set<Employee>> listOfDepartment(int department){
-        return eBook.keySet().stream()
+    public Map<String, Set<Employee>> listOfDepartment(int department){
+        Map<Integer, Set<Employee>> map =  eBook.keySet().stream()
                 .filter(s -> eBook.get(s).getDepartment() == department)
                 .map(s -> eBook.get(s))
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
+        return map.keySet().stream()
+                .collect(Collectors.toMap(s -> EmployeeServiceImpl.dBook.findName(s), map::get));
     }
 
     public Employee findEmployeeWithMaxSalary(int department) {
@@ -85,10 +87,12 @@ public class EmployeeBook {
 
     }
 
-    public Map<Integer, Set<Employee>> allDepartmentsEmployeeList(){
-        return eBook.keySet().stream()
+    public Map<String, Set<Employee>> allDepartmentsEmployeeList(){
+        Map<Integer, Set<Employee>> map = eBook.keySet().stream()
                 .map(s -> eBook.get(s))
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
+        return map.keySet().stream()
+                .collect(Collectors.toMap(s -> EmployeeServiceImpl.dBook.findName(s), map::get));
     }
 
 }

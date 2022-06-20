@@ -11,10 +11,10 @@ public interface EmployeeService {
     Employee findEmployee(String firstName, String middleName, String lastName);
     List<Employee> allEmployeeList();
 
-    Map<Integer, Set<Employee>> departmentEmployeeList(int department);
+    Map<String, Set<Employee>> departmentEmployeeList(int department);
     Employee findEmployeeWithMaxSalary(int department);
 
     Employee findEmployeeWithMinSalary(int department);
 
-    Map<Integer, Set<Employee>> allDepartmentsEmployeeList();
+    Map<String, Set<Employee>> allDepartmentsEmployeeList();
 }
