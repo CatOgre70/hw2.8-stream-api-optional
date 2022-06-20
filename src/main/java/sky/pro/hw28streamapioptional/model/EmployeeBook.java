@@ -62,7 +62,7 @@ public class EmployeeBook {
                 .map(s -> eBook.get(s))
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
         return map.keySet().stream()
-                .collect(Collectors.toMap(s -> EmployeeServiceImpl.dBook.findName(s), map::get));
+                .collect(Collectors.toMap(EmployeeServiceImpl.dBook::findName, map::get));
     }
 
     public Employee findEmployeeWithMaxSalary(int department) {
@@ -92,7 +92,7 @@ public class EmployeeBook {
                 .map(s -> eBook.get(s))
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.toSet()));
         return map.keySet().stream()
-                .collect(Collectors.toMap(s -> EmployeeServiceImpl.dBook.findName(s), map::get));
+                .collect(Collectors.toMap(EmployeeServiceImpl.dBook::findName, map::get));
     }
 
 }
